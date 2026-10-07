@@ -2,7 +2,7 @@ import sqlite3
 import os
 import sys 
 from datetime import datetime
-from database.db_manager import DatabaseManager
+from src.database.db_manager import DatabaseManager
 
 class TransactionManager(DatabaseManager):
     def __init__(self, db_path = None):
