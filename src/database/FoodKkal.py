@@ -45,3 +45,14 @@ class FoodKkalManager(DatabaseManager):
             cursor = conn.cursor()
             cursor.execute('SELECT * FROM food_kkal')
             return cursor.fetchall()
+
+    def get_total_calories(self):
+        """Потрібно брати дані за конкретний день, а не за всі дні"""
+        with self.get_connection() as conn:
+            cursor = conn.cursor()
+            cursor.execute("SELECT SUM(kkal * mass / 100) AS total_kkal, " \
+                                  "SUM(protein * mass / 100) AS total_protein, " \
+                                  "SUM(sacharidy * mass / 100) AS total_sacharidy, " \
+                                  "SUM(fat * mass / 100) AS total_fat " \
+                            "FROM food_kkal WHERE date(date_added) = date(?)", (datetime.now().strftime("%Y-%m-%d"),))
+            result = cursor.fetchone()

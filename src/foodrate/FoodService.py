@@ -16,3 +16,7 @@ class FoodService:
     def get_all_products(self):
         # Повертає список продуктів з бази даних
         return self.food_manager.get_all_products()
+
+    def get_total_calories(self):
+        # Повертає загальну кількість калорій, білків, вуглеводів та жирів за сьогоднішній день
+        return self.food_manager.get_total_calories()

@@ -17,3 +17,9 @@ class FoodController:
         products = self.service.get_all_products()
         # 2. Передає ці дані в UI, щоб він їх намалював
         self.ui.show_products(products)
+
+    def handle_total_calories(self):
+        # 1. Просить сервіс дістати дані з БД
+        total_calories = self.service.get_total_calories()
+        # 2. Передає ці дані в UI, щоб він їх намалював
+        self.ui.show_total_calories(total_calories)
