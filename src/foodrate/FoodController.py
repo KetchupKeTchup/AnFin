@@ -7,19 +7,39 @@ class FoodController:
         self.service = FoodService()
         self.ui = FoodUi()
 
-    def handle_add_product(self, product, mass, kkal, protein, sacharidy, fat):
+    def handle_add_product(self, product, mass, kkal, protein, sacharidy, fat): 
+        
         # 1. Передає дані в сервіс для обрахунку та збереження
         self.service.add_product(product, mass, kkal, protein, sacharidy, fat)
         print("Продукт успішно додано!")
 
-    def handle_view_products(self):
+    def handle_view_products(self):       
+        
         # 1. Просить сервіс дістати дані з БД
         products = self.service.get_all_products()
+        
         # 2. Передає ці дані в UI, щоб він їх намалював
         self.ui.show_products(products)
 
     def handle_total_calories(self):
+        
         # 1. Просить сервіс дістати дані з БД
         total_calories = self.service.get_total_calories()
+        
         # 2. Передає ці дані в UI, щоб він їх намалював
         self.ui.show_total_calories(total_calories)
+
+    def handle_total_calories_only(self):
+        
+        # 1. Просить сервіс дістати дані з БД
+        total_calories_only = self.service.get_total_calories_only()
+        
+        # 2. Передає ці дані в UI, щоб він їх намалював
+        self.ui.show_total_calories(total_calories_only)
+
+    def handle_calories_protein_for_dashboard(self):
+        # 1. Просить сервіс дістати дані з БД
+        total_calories, total_protein = self.service.get_calories_protein_for_dashboard()
+        
+        # 2. Передає ці дані в UI, щоб він їх намалював
+        self.ui.dashboard(total_calories, total_protein)

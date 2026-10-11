@@ -3,6 +3,7 @@ from src.database.FoodKkal import FoodKkalManager
 class FoodService:
     def __init__(self):
         self.food_manager = FoodKkalManager()
+        self.get_calories_protein_for_dashboard()
 
 
     def add_product(self,product,mass,kkal,protein,sacharidy,fat):
@@ -20,3 +21,11 @@ class FoodService:
     def get_total_calories(self):
         # Повертає загальну кількість калорій, білків, вуглеводів та жирів за сьогоднішній день
         return self.food_manager.get_total_calories()
+
+    def get_total_calories_only(self):
+        # Повертає загальну кількість калорій за сьогоднішній день
+        return self.food_manager.get_total_calories_only()
+
+    def get_calories_protein_for_dashboard(self):
+        # Повертає загальну кількість калорій та білків за сьогоднішній день
+        return self.food_manager.get_calories_protein_for_dashboard()

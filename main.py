@@ -2,6 +2,7 @@ from src.foodrate.FoodService import FoodService
 from src.foodrate.FoodUi import FoodUi
 from src.UI.main_window import MainWindow
 
+    
 def main():
     ui_Food = FoodUi()
     ui = MainWindow()
@@ -9,12 +10,18 @@ def main():
 
     while True:
         action = ui.display_menu()
+        # Створеня дашборда -------------------------------------------------------
+        dashboard_data = service.get_calories_protein_for_dashboard()
+        dashboard_calories, dashboard_protein = dashboard_data
+        ui_Food.dashboard(dashboard_calories, dashboard_protein)
+        # -------------------------------------------------------------------------
 
         if action == "1":
-            
+            # Харчування
             while True:
-                action = ui_Food.display_menu_food()
                 
+                action = ui_Food.display_menu_food()
+
                 if action == "1":
                             # 1. Просимо UI зібрати дані
                             product_data = ui_Food.get_product_data()

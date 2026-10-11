@@ -1,7 +1,7 @@
-
+from datetime import datetime
 
 class FoodUi:
-    
+
     def display_menu_food(self):
         #Початковий інтерфейс
         print("*" * 50)
@@ -34,17 +34,29 @@ class FoodUi:
         if products:
             print("Список продуктів:")
             for product in products:
-                print(f"ID: {product[0]}, Продукт: {product[1]}, Вага: {product[2]}г, Ккал: {product[3]}, "
-                      f"Білки: {product[4]}г, Вуглеводи: {product[5]}г, Жири: {product[6]}г, Дата: {product[7]}")
+                print("-" * 50)
+                print(f"ID: {product[0]}, Продукт: {product[1]}, Вага: {product[2]}г,\n Ккал: {product[3]}, "
+                      f"Білки: {product[4]}г, Вуглеводи: {product[5]}г, Жири: {product[6]}г,\n Дата: {product[7]}")
         else:
             print("Немає записів у базі даних.")
 
     def show_total_calories(self, total_calories):
+        date = datetime.now().strftime("%d-%m-%Y")
         if total_calories:
-            print("Загальна кількість калорій:")
-            print(f"Калорії: {total_calories[0]:.2f}")
-            print(f"Білки: {total_calories[1]:.2f}г")
-            print(f"Вуглеводи: {total_calories[2]:.2f}г")
-            print(f"Жири: {total_calories[3]:.2f}г")
+            print(f"Загальна кількість калорій: {date}")
+            print(f"\t - Кількість продуктів: {total_calories[0]}")
+            print(f"\t - Калорії: {total_calories[1]:.2f}")
+            print(f"\t - Білки: {total_calories[2]:.2f}г")
+            print(f"\t - Вуглеводи: {total_calories[3]:.2f}г")
+            print(f"\t - Жири: {total_calories[4]:.2f}г")
         else:
             print("Немає записів у базі даних.")
+
+    def dashboard(self, total_calories, total_protein):
+            print("\n")
+            print("-" * 50)
+            print(f"\tНа сьогодні ")
+            print(f"\tЗагальна кількість калорій: {total_calories:.2f}")
+            print(f"\tЗагальна кількість білків: {total_protein:.2f}г")
+            print("-" * 50)
+            print("\n")
